@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>LeaderBoard</title>
+      <link rel="stylesheet" href="styles.css" />
+   </head>
+
+   <body>
+      <!-- 	<div class="blog">Visit <a href="#" target="_blank">My Blog</a></div> -->
+
+      <div class="leaderboard">
+         <div class="head">
+            <i
+               ><img
+                  src="https://img.icons8.com/officel/16/000000/recent-celebrity.png"
+                  class="icon"
+            /></i>
+            <h1>Recent</h1>
+         </div>
+         <table>
+            <tr>
+               <th id="use" style="width: 20%">Result</th>
+               <th>P-Score</th>
+               <th id="mod" style="margin-right: 15px">Mode</th>
+               <th id="dat">Date</th>
+            </tr>
+         </table>
+
+         <div class="body">
+            <ol id="menu">
+               <li>
+                  <mark></mark>
+                  <small></small>
+                  <mark class="fg"></mark>
+                  <mark class="fg1"></mark>
+               </li>
+               <li>
+                  <mark></mark>
+                  <small></small>
+                  <mark class="fg"></mark>
+                  <mark></mark>
+               </li>
+               <li>
+                  <mark></mark>
+                  <small></small>
+                  <mark class="fg"></mark>
+                  <mark></mark>
+               </li>
+               <li>
+                  <mark></mark>
+                  <small></small>
+                  <mark class="fg"></mark>
+                  <mark></mark>
+               </li>
+               <li>
+                  <mark></mark>
+                  <small></small>
+                  <mark class="fg"></mark>
+                  <mark></mark>
+               </li>
+            </ol>
+         </div>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+      <script src="../icon.js"></script>
+
+      <script>
+         const socket = io.connect(
+            "https://back-end-server-vaibhav.herokuapp.com/"
+         );
+
+         let account_data = sessionStorage.getItem("info");
+         let account_detail = JSON.parse(account_data);
+         socket.emit("get", account_detail);
+         socket.on("not", () => {
+            alert("You haven't played Yet");
+         });
+
+         socket.on("recentdata", (data) => {
+            bruh(data);
+         });
+         function bruh(data2) {
+            //console.log(leaderboard[0]);
+            let data = document.getElementById("menu");
+            let index = data2[0].Result.length - 1;
+            console.log(index);
+            //First Li
+            let val1 = data.firstElementChild;
+            val1.firstElementChild.innerHTML = data2[0].Result[index];
+            val1.firstElementChild.nextElementSibling.innerHTML =
+               data2[0].PlayerScore[index];
+            val1.firstElementChild.nextElementSibling.nextElementSibling.innerHTML =
+               data2[0].GameMode[index];
+            val1.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML =
+               data2[0].date[index];
+
+            //next LI
+            if (Math.sign(index - 1) == -1) return;
+            if (data2[0].PlayerScore[index - 1] == undefined) return;
+            let val2 = data.firstElementChild.nextElementSibling;
+            val2.firstElementChild.innerHTML = data2[0].Result[index - 1];
+            val2.firstElementChild.nextElementSibling.innerHTML =
+               data2[0].PlayerScore[index - 1];
+            val2.firstElementChild.nextElementSibling.nextElementSibling.innerHTML =
+               data2[0].GameMode[index - 1];
+            val2.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML =
+               data2[0].date[index - 1];
+
+            if (Math.sign(index - 2) == -1) return;
+            if (data2[0].PlayerScore[index - 2] == undefined) return;
+            let val3 =
+               data.firstElementChild.nextElementSibling.nextElementSibling;
+            val3.firstElementChild.innerHTML = data2[0].Result[index - 2];
+            val3.firstElementChild.nextElementSibling.innerHTML =
+               data2[0].PlayerScore[index - 2];
+            val3.firstElementChild.nextElementSibling.nextElementSibling.innerHTML =
+               data2[0].GameMode[index - 2];
+            val3.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML =
+               data2[0].date[index - 2];
+
+            if (Math.sign(index - 3) == -1) return;
+            if (data2[0].PlayerScore[index - 3] == undefined) return;
+            let val4 =
+               data.firstElementChild.nextElementSibling.nextElementSibling
+                  .nextElementSibling;
+            val4.firstElementChild.innerHTML = data2[0].Result[index - 3];
+            val4.firstElementChild.nextElementSibling.innerHTML =
+               data2[0].PlayerScore[index - 3];
+            val4.firstElementChild.nextElementSibling.nextElementSibling.innerHTML =
+               data2[0].GameMode[index - 3];
+            val4.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML =
+               data2[0].date[index - 3];
+
+            if (Math.sign(index - 4) == -1) return;
+            if (data2[0].PlayerScore[index - 4] == undefined) return;
+            let val5 =
+               data.firstElementChild.nextElementSibling.nextElementSibling
+                  .nextElementSibling.nextElementSibling;
+            val5.firstElementChild.innerHTML = data2[0].Result[index - 4];
+            val5.firstElementChild.nextElementSibling.innerHTML =
+               data2[0].PlayerScore[index - 4];
+            val5.firstElementChild.nextElementSibling.nextElementSibling.innerHTML =
+               data2[0].GameMode[index - 4];
+            val5.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML =
+               data2[0].date[index - 4];
+         }
+      </script>
+   </body>
+</html>

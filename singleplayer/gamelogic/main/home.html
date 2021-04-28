@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="style.css" />
+      <title>Dot&Boxes</title>
+   </head>
+   <body id="body">
+      <div>
+         <!--<theme Selection>-->
+         <div class="select">
+            <img
+               class="theme"
+               src="https://img.icons8.com/cute-clipart/64/000000/change-theme.png"
+               onclick="refer()"
+            />
+            <img
+               src="https://img.icons8.com/plasticine/100/000000/recurring-appointment.png"
+               id="restart"
+               class="theme"
+               onclick="restart()"
+            />
+            <img
+               src="https://img.icons8.com/cute-clipart/50/000000/exit.png"
+               id="restart"
+               class="theme"
+               onclick="exit()"
+            />
+            <div class="popup center">
+               <div class="icon">
+                  <i class="res">
+                     <img
+                        class="res"
+                        src="https://img.icons8.com/cute-clipart/64/000000/trophy.png"
+                     />
+                  </i>
+               </div>
+               <div class="title"><u>Result</u></div>
+               <div class="description">
+                  <label id="result-mode"></label>
+                  <label id="Computer"></label>
+                  <label id="Player"></label>
+               </div>
+
+               <div class="dismiss-btn">
+                  <button class="dismiss" id="dismiss-popup-btn">
+                     Restart
+                  </button>
+                  <button
+                     class="dismiss1"
+                     id="dismiss-popup-btn2"
+                     onclick="home()"
+                  >
+                     Exit
+                  </button>
+               </div>
+            </div>
+         </div>
+         <!--<Score and Result>-->
+         <div id="ScoreCard">
+            <div class="Score-container">
+               <div class="player">
+                  <h1 data-text="Player" class="heading1">Player</h1>
+               </div>
+               <div class="computer">
+                  <h1 data-text="Computer" class="heading2">Computer</h1>
+               </div>
+            </div>
+            <div class="score-count">
+               <span id="player-score"></span>
+               <span id="computer-score"></span>
+            </div>
+         </div>
+      </div>
+      <!--<gameScreem>-->
+      <div>
+         <section>
+            <div class="container">
+               <div id="gamescreen">
+                  <canvas id="canvas"></canvas>
+               </div>
+            </div>
+         </section>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+      <script src="gamelogic.js"></script>
+   </body>
+</html>

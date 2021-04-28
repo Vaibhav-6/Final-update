@@ -1,0 +1,148 @@
+/*
+ * Reference - https://codepen.io/supah/pen/WwrJpw
+ */
+
+/* basic */
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+html,
+body {
+	height: 100%;
+}
+body {
+	font: 16px/1.2 "Roboto", sans-serif;
+	color: #333;
+}
+a {
+	display: inline-block;
+	color: #333;
+	text-decoration: none;
+}
+.blog {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	position: absolute;
+	bottom: 15px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1;
+}
+
+/* container */
+.container {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	background-color: white;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+	overflow: hidden;
+}
+mark{
+	width: 15%;
+	margin-right: 10px;
+}
+small{
+	width: 10%;
+	text-align: center;
+}
+table{
+	width: 100%;
+	border: 1px solid black;
+	color: blanchedalmond;
+	background: rgb(45, 173, 120);
+}
+tr{
+	width: 100%;
+}
+th{
+	width: 20%;
+}
+#dat{text-align: left;}
+#mod{text-align: left;margin-left: 10px;}
+.fg{text-align: center;}
+.fg1{height: 30%}
+#use{
+	margin-left: 15px;
+}
+/* leaderboard */
+.leaderboard {
+	background: linear-gradient(to bottom, #3a404d, #181c26);
+	height: 100%;
+	
+}
+
+/* head */
+.leaderboard .head {
+	padding: 20px 16px;
+	color: snow;
+	font-size: 20px;
+	text-align: center;
+}
+.leaderboard .head h1 {
+	display: inline-block;
+	margin-left: 4px;
+}
+
+/* body */
+.leaderboard .body {
+	color: snow;
+	font-size: 16px;
+}
+.leaderboard ol {
+	counter-reset: number; 
+}
+.icon{
+	font-size: 20px;
+	border: 2px solid #34f234;
+	padding: 10px;
+	background: black;
+	border-radius: 100%;
+	color: rgb(162, 0, 255);
+ }
+
+.leaderboard li {
+	padding: 16px;
+	display: flex;
+}
+.leaderboard li mark {
+	flex-grow: 1;
+	color: snow;
+	background-color: transparent;
+}
+.leaderboard li:before {
+	counter-increment: number; 
+	content: counter(number) "."; 
+	margin-right: 4px;
+}
+.leaderboard li:nth-child(1) {
+	background-image: linear-gradient(135deg, #fc00ff 0%, #00dbde 100%);
+}
+.leaderboard li:nth-child(2) {
+	background-image: linear-gradient(135deg, #fc00ff 0%, #00dbde 100%);
+}
+.leaderboard li:nth-child(3) {
+	background-image: linear-gradient(135deg, #fc00ff 0%, #00dbde 100%);
+}
+.leaderboard li:nth-child(4) {
+	background-image: linear-gradient(135deg, #fc00ff 0%, #00dbde 100%);
+}
+.leaderboard li:nth-child(5) {
+	background-image: linear-gradient(135deg, #fc00ff 0%, #00dbde 100%);
+}
+.leaderboard li:nth-child(6) {
+	background-image: linear-gradient(135deg, #fc00ff 0%, #00dbde 100%);
+}.leaderboard li:nth-child(7) {
+	background-image: linear-gradient(135deg, #fc00ff 0%, #00dbde 100%);
+}

@@ -1,0 +1,224 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}  
+body{
+  background-image: linear-gradient(to right ,var(--local-color1) 0%, var(--local-color2) 100%);
+
+}
+  .center {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+  }
+  .popup {
+    width:350px;
+    height:55vh;
+    padding:30px 20px; 
+    background:#f5f5f5;
+    border-radius:10px;
+    box-sizing:border-box;
+    z-index:2;
+    text-align:center;
+    opacity:0;
+    top:-200%;
+    transform:translate(-50%,-50%) scale(0.5);
+    transition: opacity 300ms ease-in-out,
+                top 1000ms ease-in-out,
+                transform 1000ms ease-in-out;
+  }
+  .popup.active {
+    opacity:1;
+    top:50%;
+    transform:translate(-50%,-50%) scale(1);
+    transition: transform 300ms cubic-bezier(0.18,0.89,0.43,1.19);
+  }
+  .popup .icon {
+    margin:5px 0px;
+    width:50px;
+    height:50px;
+    border:2px solid #34f234;
+    background:#f5f5f5;
+    text-align:center;
+    display:inline-block;
+    border-radius:50%;
+    line-height:60px;
+    font-size: 30px;
+  }
+  .popup .icon i.fa {
+    font-size:30px;
+    color:#34f234;
+    background:#f5f5f5;
+  } 
+.gridImg{
+    width: 24px;
+    height: 24px;
+    background:#f5f5f5;
+  }
+  .popup .title {
+    margin:5px 0px;
+    font-size:30px;
+    background:#f5f5f5;
+    font-weight:600;
+  }
+  .popup .description {
+    color:#222;
+    font-size:15px;
+    height: 20vh;
+    display: flex;
+            flex-direction: column;
+            font-size: 15px;
+            padding: 5px;
+    background:#f5f5f5;
+    padding:5px;
+  }
+ #result-mode{
+    background:#f5f5f5;
+ }
+  .popup .dismiss-btn {
+    margin-top:15px;
+    background:#f5f5f5;
+
+  }
+  .popup .dismiss-btn button {
+    padding:10px 20px;
+    background:#111;
+    color:#f5f5f5;
+    border:2px solid #111;
+    font-size:16px;
+    font-weight:600;
+    outline:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition: all 300ms ease-in-out;
+  }
+  .popup .dismiss-btn button:hover {
+    color:#111;
+    background:#f5f5f5;
+  }
+  .popup > div {
+    position:relative;
+    top:10px;
+    opacity:0;
+  }
+  .popup.active > div {
+    top:0px;
+    opacity:1;
+  }
+  .popup.active .icon {
+    transition: all 300ms ease-in-out 250ms;
+  }
+  .popup.active .title {
+    transition: all 300ms ease-in-out 300ms;
+  }
+  .popup.active .description {
+    transition: all 300ms ease-in-out 350ms;
+  }
+  .popup.active .dismiss-btn {
+    transition: all 300ms ease-in-out 400ms;
+  }
+
+
+
+
+
+.theme{
+    display: flex;
+    justify-content: flex-end;
+    background: ivory;
+    margin:5px 0px;
+    width:30px;
+    height:30px;
+    border:1px solid #34f234;
+    text-align:center;
+    display:inline-block;
+    border-radius:50%;
+    line-height:60px;
+    font-size: 20px;
+}
+#Player {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: black;
+}
+.res{
+
+    width: 40px;
+    height: 40px;
+  
+}
+#Computer {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: black;
+}
+#result-mode {
+  border: 2px solid black;
+  background: rgba(255, 0, 0, 0.63);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: black;
+}
+#ScoreCard{
+    height: 30vh;
+} 
+.Score-container{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+.heading1{
+    background: black;
+    position: relative;
+    color: var(--play-val);
+    margin-bottom: 5px;
+    margin-right: 15px;
+}
+.heading2{
+  background: black;
+    position: relative;
+    color: var(--comp-val);
+
+}
+.player{
+    width: 50%;
+}
+.computer{
+    width: 50%;
+}
+.score-count{
+    height: 5vh;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#player-score{
+    text-align: center;
+    width: 50%;
+    font-size: 25px;
+    font-weight: 500;
+}
+#computer-score{
+    text-align: center;
+    width: 50%;
+    font-size: 25px;
+    font-weight: 500;
+}
+.result{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+

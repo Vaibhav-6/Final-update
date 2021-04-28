@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Home</title>
+      <link rel="stylesheet" href="design.css" />
+   </head>
+   <body>
+      <div class="container">
+         <div class="single-player">
+            <button id="single" onclick="redirect()">Single Player</button>
+         </div>
+         <h1>Or</h1>
+         <div class="multi-player">
+            <button id="multi" onclick="errormsg()">MultiPlayer</button>
+         </div>
+      </div>
+      <script>
+         function redirect() {
+            sessionStorage.setItem("m", JSON.stringify(0));
+            location.href = "gamelogic/popup.html";
+         }
+         function errormsg() {
+            sessionStorage.setItem("m", JSON.stringify(1));
+            location.href = "gamelogic/popup.html";
+         }
+      </script>
+   </body>
+</html>

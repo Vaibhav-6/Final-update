@@ -1,0 +1,334 @@
+body{
+   box-sizing: border-box;
+   margin: 0px;
+   padding: 0px;
+   background-image: linear-gradient(135deg ,#71b7e6 0%, #9b59b6 100%);
+
+}
+body{
+   height: 100vh;
+}
+
+h1{
+   font-size: 2.5rem;
+}
+.bruh{
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+#register {
+   height: 60px;
+    padding:10px 20px;
+    background-image: linear-gradient(135deg ,#7190e6 0%, #9b59b6 100%);
+    color: #111;
+    margin-bottom: 15px;
+    border:2px solid #111;
+    font-size:16px;
+    font-weight:600;
+    outline:none;
+    border-radius:10px;
+}
+#ha{
+   font-size:20px;
+    font-weight:600;
+    margin-bottom: 15px;
+}
+#login{
+   height: 60px;
+    padding:10px 20px;
+   
+    background:rgb(36, 247, 148);
+    color:#111;
+    margin-bottom: 15px;
+    border:2px solid #111;
+    font-size:20px;
+    font-weight:600;
+    outline:none;
+    border-radius:10px;
+}
+#guest {
+   height: 60px;
+    padding:10px 20px;
+    background:#111;
+    color:#f5f5f5;
+    border:2px solid #111;
+    font-size:16px;
+    font-weight:600;
+    outline:none;
+    border-radius:10px;
+}
+
+#message {
+   display:none;
+   background: #f1f1f1;
+   color: #000;
+ }
+ #message p {
+   font-size: 18px;
+ }
+ #usermsg {
+   display:none;
+   background: #f1f1f1;
+   color: #000;
+ }
+ #usermsg p {
+   font-size: 18px;
+ }
+ 
+ .valid {
+   color: green;
+ }
+ 
+ .valid:before {
+   bottom: 100%;
+   left: -35px;
+   content: "✔";
+ }
+ 
+
+ .invalid {
+   color: red;
+ }
+ 
+ .invalid:before {
+   bottom: 100%;
+   left: -35px;
+   content: "✖";
+ }
+                .center1 {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+                .popup1 {
+                    width: 350px;
+                    height: 280px;
+                    padding: 30px 20px;
+                    background-image: linear-gradient(
+                    to right,
+                    #65ecf6 0%,
+                    #c9fd85 100%
+                    );
+                    border-radius: 10px;
+                    box-sizing: border-box;
+                    z-index: 2;
+                    text-align: center;
+                    opacity: 0;
+                    top: -200%;
+                    transform: translate(-50%, -50%) scale(0.5);
+                    transition: opacity 300ms ease-in-out, top 1000ms ease-in-out,
+                    transform 1000ms ease-in-out;
+                }
+                .popup1.active {
+                    opacity: 1;
+                    top: 50%;
+                    transform: translate(-50%, -50%) scale(1);
+                    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+                }
+                .popup1 .icon {
+                    margin: 5px 0px;
+                    width: 50px;
+                    height: 50px;
+                    border: 2px solid #34f234;
+                    text-align: center;
+                    display: inline-block;
+                    border-radius: 50%;
+                    line-height: 60px;
+                }
+                .popup1 .icon i.fa {
+                    font-size: 30px;
+                    color: #34f234;
+                }
+                .gridImg {
+                    width: 24px;
+                    height: 24px;
+                }
+                .popup1 .title1 {
+                    margin: 5px 0px;
+                    font-size: 30px;
+                    font-weight: 600;
+                }
+                .popup1 .description1 {
+                    color: #222;
+                    font-size: 15px;
+                    padding: 5px;
+                }
+                .radio1 {
+                    font-size: 10px;
+                    font-weight: 100;
+                }
+                .popup1 .dismiss-btn1 {
+                    margin-top: 15px;
+                }
+                .popup1 .dismiss-btn1 button {
+                    padding: 10px 20px;
+                    background: #111;
+                    color: #f5f5f5;
+                    border: 2px solid #111;
+                    font-size: 16px;
+                    font-weight: 600;
+                    outline: none;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    transition: all 300ms ease-in-out;
+                }
+                .popup1 .dismiss-btn1 button:hover {
+                    color: #111;
+                    background: #f5f5f5;
+                }
+                .popup1 > div {
+                    position: relative;
+                    top: 10px;
+                    opacity: 0;
+                }
+                .popup1.active > div {
+                    top: 0px;
+                    opacity: 1;
+                }
+                .popup1.active .icon {
+                    transition: all 300ms ease-in-out 250ms;
+                }
+                .popup1.active .title1 {
+                    transition: all 300ms ease-in-out 300ms;
+                }
+                .popup1.active .description1 {
+                    transition: all 300ms ease-in-out 350ms;
+                }
+                .popup1.active .dismiss-btn1 {
+                    transition: all 300ms ease-in-out 400ms;
+                }
+                #register #login {
+                    padding: 10px 20px;
+                    background: #111;
+                    color: #f5f5f5;
+                    border: 2px solid #111;
+                    font-size: 16px;
+                    font-weight: 600;
+                    outline: none;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    transition: all 300ms ease-in-out;
+                }
+
+         .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+         }
+         .popup {
+            width: 350px;
+            height: 280px;
+            padding: 30px 20px;
+            background-image: linear-gradient(
+               to right,
+               #65f689 0%,
+                    #c9fd85 100%
+            );
+            border-radius: 10px;
+            box-sizing: border-box;
+            z-index: 2;
+            text-align: center;
+            opacity: 0;
+            top: -200%;
+            transform: translate(-50%, -50%) scale(0.5);
+            transition: opacity 300ms ease-in-out, top 1000ms ease-in-out,
+               transform 1000ms ease-in-out;
+         }
+         .popup.active {
+            opacity: 1;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+         }
+         .popup .icon {
+            margin: 5px 0px;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #34f234;
+            text-align: center;
+            display: inline-block;
+            border-radius: 50%;
+            line-height: 60px;
+         }
+         .popup .icon i.fa {
+            font-size: 30px;
+            color: #34f234;
+         }
+         .gridImg {
+            width: 24px;
+            height: 24px;
+         }
+         .popup .title {
+            margin: 5px 0px;
+            font-size: 30px;
+            font-weight: 600;
+         }
+         .popup .description {
+            color: #222;
+            font-size: 15px;
+            padding: 5px;
+         }
+         .radio1 {
+            font-size: 10px;
+            font-weight: 100;
+         }
+         .popup .dismiss-btn {
+            margin-top: 15px;
+         }
+         .popup .dismiss-btn button {
+            padding: 10px 20px;
+            background: #111;
+            color: #f5f5f5;
+            border: 2px solid #111;
+            font-size: 16px;
+            font-weight: 600;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
+         }
+         .popup .dismiss-btn button:hover {
+            color: #111;
+            background: #f5f5f5;
+         }
+         .popup > div {
+            position: relative;
+            top: 10px;
+            opacity: 0;
+         }
+         .popup.active > div {
+            top: 0px;
+            opacity: 1;
+         }
+         .popup.active .icon {
+            transition: all 300ms ease-in-out 250ms;
+         }
+         .popup.active .title {
+            transition: all 300ms ease-in-out 300ms;
+         }
+         .popup.active .description {
+            transition: all 300ms ease-in-out 350ms;
+         }
+         .popup.active .dismiss-btn {
+            transition: all 300ms ease-in-out 400ms;
+         }
+         #register #login {
+            padding: 10px 20px;
+            background: #111;
+            color: #f5f5f5;
+            border: 2px solid #111;
+            font-size: 16px;
+            font-weight: 600;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
+         }
+
+         

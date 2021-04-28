@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <link rel="stylesheet" href="style.css" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Login</title>
+      <link
+         rel="stylesheet"
+         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      />
+   </head>
+   <body>
+      <div class="popup center">
+         <div class="title">REGISTER</div>
+         <div class="description">
+            <input
+               type="text"
+               id="username"
+               class="form-control"
+               style="border-radius: 20px"
+               placeholder="Create Username"
+            />
+            <div id="usermsg">
+               <h6>Username must contain following:</h6>
+               <p id="special" class="invalid">A <b>Special Character</b></p>
+               <p id="number1" class="invalid">A <b>number</b></p>
+               <p id="length1" class="invalid">Minimum <b>8 Character</b></p>
+            </div>
+            &nbsp;
+            <input
+               type="password"
+               id="password"
+               style="border-radius: 20px"
+               class="form-control"
+               placeholder="Create Password"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+               title="Must Contain at least one number and one uppercase and lowercase and at least 8 or more char"
+               required
+            />
+            <div id="message">
+               <h6>Password must contain following:</h6>
+               <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+               <p id="capital" class="invalid">A <b>capital</b> letter</p>
+               <p id="number" class="invalid">A <b>number</b></p>
+               <p id="length" class="invalid">Minimum <b>8 Character</b></p>
+            </div>
+         </div>
+         <div class="dismiss-btn" id="dismis">
+            <button class="dismiss" id="dismiss-popup-btn">Sign IN</button>
+         </div>
+      </div>
+      <!--Login-->
+      <div class="popup1 center1">
+         <div class="title1">LOGIN</div>
+         <div class="description1">
+            <input
+               type="text"
+               id="username1"
+               class="form-control"
+               style="border-radius: 20px"
+               placeholder="Enter Username"
+            />
+            &nbsp;
+            <label for="password1"></label>
+            <input
+               type="password"
+               id="password1"
+               class="form-control"
+               placeholder="Enter Password"
+               style="border-radius: 20px"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+               title="Must Contain at least one number and one uppercase and lowercase and at least 8 or more char"
+               required
+            />
+         </div>
+         <div class="dismiss-btn1">
+            <button class="dismiss1" id="dismiss-popup-btn1">Sign IN</button>
+         </div>
+      </div>
+      <div class="bruh">
+         <button id="register">Register</button>
+         <button id="login">Login</button>
+         <label for="guest" id="ha">OR</label>
+         <button id="guest" onclick="guest()">Play as Guest</button>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+      <script>
+         if (localStorage.getItem("infolocal") != null) {
+            let val = localStorage.getItem("infolocal");
+            let ogval = JSON.parse(val);
+            sessionStorage.setItem("info", JSON.stringify(ogval));
+            location.replace("singleplayer/main.html");
+         }
+         var login = document.getElementById("login");
+         var register = document.getElementById("register");
+
+         register.addEventListener("click", (e) => {
+            document.getElementsByClassName("popup")[0].classList.add("active");
+         });
+         login.addEventListener("click", (e) => {
+            document
+               .getElementsByClassName("popup1")[0]
+               .classList.add("active");
+         });
+
+         const socket = io.connect(
+            "https://back-end-server-vaibhav.herokuapp.com/"
+         );
+         //Register Section
+         var user = document.getElementById("username");
+         var pass = document.getElementById("password");
+         var submit = document.getElementById("dismiss-popup-btn");
+
+         if (socket !== undefined) {
+            submit.addEventListener("click", (e) => {
+               if (
+                  special.classList != "valid" ||
+                  number1.classList != "valid" ||
+                  length1.classList != "valid" ||
+                  length.classList != "valid" ||
+                  number.classList != "valid" ||
+                  letter.classList != "valid" ||
+                  capital.classList != "valid"
+               ) {
+                  document
+                     .getElementsByClassName("popup")[0]
+                     .classList.remove("active");
+                  alert(
+                     "Username OR Password Rules are not Followed,Account Not Created"
+                  );
+               } else {
+                  console.log("submitbuttonclick");
+                  document
+                     .getElementsByClassName("popup")[0]
+                     .classList.remove("active");
+
+                  socket.emit("submit", {
+                     name: user.value,
+                     password: pass.value,
+                  });
+                  socket.on("result", (data) => {
+                     alert("Account With Same Username Already Exist");
+                     location.reload();
+                  });
+               }
+            });
+         }
+
+         //Login Section
+         var userLogin = document.getElementById("username1");
+         var passLogin = document.getElementById("password1");
+         var submitLogin = document.getElementById("dismiss-popup-btn1");
+
+         if (socket !== undefined) {
+            submitLogin.addEventListener("click", (e) => {
+               document
+                  .getElementsByClassName("popup1")[0]
+                  .classList.remove("active");
+               console.log("Loginbuttonclick");
+               socket.emit("submitLogin", {
+                  name: userLogin.value,
+                  password: passLogin.value,
+               });
+            });
+            socket.on("loginfail", (data) => {
+               alert("Account Does Not Exists Please Register!");
+               location.reload();
+            });
+            socket.on("verified", (data) => {
+               alert("Welcome User " + data.username);
+               sessionStorage.setItem("info", JSON.stringify(data));
+               localStorage.setItem("infolocal", JSON.stringify(data));
+               location.replace("singleplayer/main.html");
+            });
+            socket.on("passfail", (data) => {
+               alert("Password Wrong For Account " + data.username);
+               location.reload();
+            });
+         }
+         function guest() {
+            location.href = "singleplayer/guest.html";
+         }
+
+         var letter = document.getElementById("letter");
+         var capital = document.getElementById("capital");
+         var number = document.getElementById("number");
+         var length = document.getElementById("length");
+         var number1 = document.getElementById("number1");
+         var length1 = document.getElementById("length1");
+         var special = document.getElementById("special");
+         // When the user clicks on the password field, show the message box
+         pass.onfocus = function () {
+            document.getElementById("message").style.display = "block";
+            submit.style.display = "none";
+         };
+         // When the user clicks outside of the password field, hide the message box
+         pass.onblur = function () {
+            document.getElementById("message").style.display = "none";
+            submit.style.display = "block";
+            submit.style.marginLeft = "100px";
+         };
+
+         user.onfocus = function () {
+            document.getElementById("usermsg").style.display = "block";
+            submit.style.display = "none";
+            pass.style.display = "none";
+         };
+         // When the user clicks outside of the Username field, hide the message box
+         user.onblur = function () {
+            document.getElementById("usermsg").style.display = "none";
+            submit.style.display = "block";
+            pass.style.display = "block";
+            submit.style.marginLeft = "100px";
+         };
+
+         user.onkeyup = function () {
+            var specialLetter = /\W|_/g;
+            if (user.value.match(specialLetter)) {
+               special.classList.remove("invalid");
+               special.classList.add("valid");
+            } else {
+               special.classList.remove("valid");
+               special.classList.add("invalid");
+            }
+
+            var numbers = /[0-9]/g;
+            if (user.value.match(numbers)) {
+               number1.classList.remove("invalid");
+               number1.classList.add("valid");
+            } else {
+               number1.classList.remove("valid");
+               number1.classList.add("invalid");
+            }
+
+            if (user.value.length >= 8) {
+               length1.classList.remove("invalid");
+               length1.classList.add("valid");
+            } else {
+               length1.classList.remove("valid");
+               length1.classList.add("invalid");
+            }
+         };
+         // When the user starts to type something inside the password field
+         pass.onkeyup = function () {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (pass.value.match(lowerCaseLetters)) {
+               letter.classList.remove("invalid");
+               letter.classList.add("valid");
+            } else {
+               letter.classList.remove("valid");
+               letter.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (pass.value.match(upperCaseLetters)) {
+               capital.classList.remove("invalid");
+               capital.classList.add("valid");
+            } else {
+               capital.classList.remove("valid");
+               capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (pass.value.match(numbers)) {
+               number.classList.remove("invalid");
+               number.classList.add("valid");
+            } else {
+               number.classList.remove("valid");
+               number.classList.add("invalid");
+            }
+
+            // Validate length
+            if (pass.value.length >= 8) {
+               length.classList.remove("invalid");
+               length.classList.add("valid");
+            } else {
+               length.classList.remove("valid");
+               length.classList.add("invalid");
+            }
+         };
+      </script>
+   </body>
+</html>

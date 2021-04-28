@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Main Page</title>
+      <style>
+         body {
+            box-sizing: border-box;
+            background: #252839;
+            background-image: linear-gradient(135deg, #48eca8 0%, #252839 100%);
+         }
+         #playl {
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+         }
+         #wonl {
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+         }
+         #losel {
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+         }
+         #modep {
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+         }
+         .icon {
+            width: 6.5vh;
+            height: 5vh;
+            display: flex;
+            flex-direction: column;
+         }
+         .icon b {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+         }
+         .icon i.fas {
+            font-size: 20px;
+            border: 2px solid #34f234;
+            padding: 10px;
+            background: black;
+            border-radius: 100%;
+            color: rgb(162, 0, 255);
+         }
+         .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            /*background: #252839;*/
+            height: 86vh;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-sizing: border-box;
+         }
+         h1 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-left: 15px;
+            margin-right: 15px;
+            color: blanchedalmond;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+         }
+
+         .single-player {
+            margin-top: 15px;
+         }
+         .single-player button {
+            width: 25vh;
+            height: 50px;
+            padding: 10px 20px;
+            background: #111;
+            display: flex;
+            justify-content: space-between;
+            color: #f5f5f5;
+            border: 2px solid #111;
+            font-size: 16px;
+            font-weight: 600;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
+         }
+         .single-player i {
+            display: flex;
+            margin-right: 10px;
+            justify-content: left;
+         }
+         .single-player button:hover {
+            color: #111;
+            background: #f5f5f5;
+         }
+         .share {
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+         }
+         .share .fab {
+            margin: 10px;
+            font-size: 30px;
+            color: white;
+         }
+
+         .multi-player {
+            margin-top: 15px;
+         }
+         .multi-player button {
+            width: 25vh;
+            height: 50px;
+            padding: 10px 20px;
+            background: #111;
+            color: #f5f5f5;
+            border: 2px solid #111;
+            font-size: 16px;
+            font-weight: 600;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
+         }
+         .multi-player button:hover {
+            color: #111;
+            background: #f5f5f5;
+         }
+
+         .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+         }
+         .popup {
+            width: 350px;
+            height: 80vh;
+            padding: 30px 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            box-sizing: border-box;
+            z-index: 2;
+            text-align: center;
+            opacity: 0;
+            top: -200%;
+            transform: translate(-50%, -50%) scale(0.5);
+            transition: opacity 300ms ease-in-out, top 1000ms ease-in-out,
+               transform 1000ms ease-in-out;
+         }
+         .popup.active {
+            opacity: 1;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+         }
+         .popup .icon {
+            margin: 5px 0px;
+            width: 60px;
+            height: 60px;
+            border: 2px solid #34f234;
+            text-align: center;
+            background: black;
+            display: inline-block;
+            border-radius: 50%;
+            line-height: 60px;
+         }
+         .popup .icon i.fa {
+            font-size: 30px;
+            color: #34f234;
+         }
+         .gridImg {
+            width: 24px;
+            height: 24px;
+         }
+         .popup .title span {
+            margin: 5px 0px;
+            font-size: 30px;
+            font-weight: 600;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+         }
+         .popup .description {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background: rgb(0, 41, 0);
+            display: flex;
+            flex-direction: column;
+            height: 30vh;
+            border: 4px solid rgb(12, 6, 0);
+            text-align: left;
+            color: #222;
+            font-size: 15px;
+            padding: 5px;
+         }
+         .radio1 {
+            font-size: 10px;
+            font-weight: 100;
+         }
+         .popup .dismiss-btn {
+            margin-top: 15px;
+         }
+         .popup .dismiss-btn button {
+            padding: 10px 20px;
+            background: #111;
+            color: #f5f5f5;
+            border: 2px solid #111;
+            font-size: 16px;
+            font-weight: 600;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
+         }
+         .popup .dismiss-btn button:hover {
+            color: #111;
+            background: #f5f5f5;
+         }
+         .popup > div {
+            position: relative;
+            top: 10px;
+            opacity: 0;
+         }
+         .popup.active > div {
+            top: 0px;
+            opacity: 1;
+         }
+         .popup.active .icon {
+            transition: all 300ms ease-in-out 250ms;
+         }
+         .popup.active .title {
+            transition: all 300ms ease-in-out 300ms;
+         }
+         .popup.active .description {
+            transition: all 300ms ease-in-out 350ms;
+         }
+         .popup.active .dismiss-btn {
+            transition: all 300ms ease-in-out 400ms;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="icon">
+         <i class="fas fa-user" id="iconp"></i>
+         <b style="color: white">Profile</b>
+      </div>
+      <div class="popup center">
+         <div class="icon">
+            <i class="fa fa-user-shield"></i>
+         </div>
+         <div class="title"><span id="rotate"></span></div>
+         <div class="description">
+            <label id="playl"
+               ><b>Game Played: </b><span id="play"></span
+            ></label>
+            <label id="wonl"> <b>Game Won: </b><span id="won"></span></label>
+            <label id="losel"><b>Game Lose: </b><span id="lose"></span></label>
+            <label id="modep"
+               ><b>Most Played: </b><span id="mode"></span
+            ></label>
+         </div>
+         <div class="dismiss-btn">
+            <button class="dismiss" id="dismiss-popup-btn">Close!</button>
+            <button
+               style="background: rgba(255, 0, 0, 0.63)"
+               class="dismiss"
+               id="bruh"
+            >
+               Log-Out
+            </button>
+         </div>
+      </div>
+      <div class="container">
+         <div class="single-player">
+            <button id="single" onclick="redirect()">
+               <i class="fas fa-user-clock"></i>
+               SinglePlayer
+            </button>
+         </div>
+         <div class="multi-player">
+            <button id="multi" onclick="errormsg()">
+               <i class="fas fa-user-friends"></i> MultiPlayer
+            </button>
+         </div>
+         <div class="multi-player">
+            <button id="recent" onclick="f()">Recent</button>
+         </div>
+         <div class="multi-player">
+            <button id="leader" onclick="l()">
+               <i class="fas fa-crown"></i> Leader
+            </button>
+         </div>
+         <div class="multi-player">
+            <button id="tut" onclick="a()">
+               <i class="fas fa-info"></i> About
+            </button>
+         </div>
+         <!--<img
+               src="https://img.icons8.com/ios-filled/50/000000/power-off-button.png"
+            />-->
+      </div>
+      <div class="share">
+         <i class="fab fa-whatsapp" onclick="w()" aria-hidden="true"></i>
+         <i class="fab fa-telegram" onclick="tg()"></i>
+         <i class="fab fa-twitter" onclick="tw()"></i>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+      <script src="icon.js"></script>
+      <script>
+         const socket = io.connect(
+            "https://back-end-server-vaibhav.herokuapp.com/"
+         );
+
+         let account_data = sessionStorage.getItem("info");
+         let account_detail = JSON.parse(account_data);
+         if (account_detail == null) location.replace("../index.html");
+         function redirect() {
+            console.log("here");
+            sessionStorage.setItem("m", JSON.stringify(0));
+            location.href = "gamelogic/popup.html";
+         }
+         function errormsg() {
+            sessionStorage.setItem("m", JSON.stringify(1));
+            location.href = "gamelogic/popup.html";
+         }
+
+         function f() {
+            location.href = "gamelogic/recent.html";
+         }
+         function l() {
+            location.href = "gamelogic/leader.html";
+         }
+         function a() {
+            location.href = "gamelogic/bruh1.html";
+         }
+         function w() {
+            location.href =
+               "whatsapp://send?text=https://github.com/Vaibhav-6/Final-update";
+         }
+         function tg() {
+            location.href =
+               "tg://msg?text=https://github.com/Vaibhav-6/Final-update";
+         }
+         function tw() {
+            location.href =
+               "https://www.twitter.com/share?url=https://github.com/Vaibhav-6/Final-update";
+         }
+         document.getElementById("iconp").addEventListener("click", (e) => {
+            document.getElementsByClassName("popup")[0].classList.add("active");
+            socket.emit("display", account_detail);
+            socket.on("desc", (data) => {
+               document.getElementById("play").innerHTML = data;
+            });
+            socket.on("wonlose", (data) => {
+               if (data["Player Wins"] == undefined) {
+                  document.getElementById("lose").innerHTML = data.total;
+               } else {
+                  document.getElementById("won").innerHTML =
+                     data["Player Wins"];
+                  var d = data.total - data["Player Wins"];
+                  document.getElementById("lose").innerHTML = d;
+               }
+            });
+            document.getElementById("bruh").addEventListener("click", (e) => {
+               document
+                  .getElementsByClassName("popup")[0]
+                  .classList.remove("active");
+               localStorage.removeItem("infolocal");
+               if (sessionStorage.getItem("info") != null) {
+                  sessionStorage.removeItem("info");
+               }
+               location.replace("../index.html");
+            });
+            socket.on("modep", (data) => {
+               if (data.Multi == undefined) {
+                  document.getElementById("mode").innerHTML = " Single";
+               } else if (data.Multi == data.Single) {
+                  document.getElementById("mode").innerHTML = " Equal";
+               } else if (data.Multi > data.Single) {
+                  document.getElementById("mode").innerHTML = " Multi";
+               } else {
+                  document.getElementById("mode").innerHTML = " Single";
+               }
+            });
+         });
+         document.getElementById(
+            "rotate"
+         ).innerHTML = `<b>${account_detail.username}</b>`;
+         document
+            .getElementById("dismiss-popup-btn")
+            .addEventListener("click", function () {
+               document
+                  .getElementsByClassName("popup")[0]
+                  .classList.remove("active");
+            });
+      </script>
+   </body>
+</html>

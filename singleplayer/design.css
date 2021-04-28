@@ -1,0 +1,65 @@
+body{
+    box-sizing: border-box;
+    background: #252839;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    background: #252839;
+    height: 100vh;
+    padding:30px 20px;
+    border-radius:10px;
+    box-sizing:border-box;
+}
+h1{
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 15px;
+    margin-right: 15px;
+    color: blanchedalmond;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.single-player {
+    margin-top:15px;
+  }
+.single-player button {
+    height: 60px;
+    padding:10px 20px;
+    background:#111;
+    color:#f5f5f5;
+    border:2px solid #111;
+    font-size:16px;
+    font-weight:600;
+    outline:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition: all 300ms ease-in-out;
+}
+.single-player button:hover {
+    color:#111;
+    background:#f5f5f5;
+}
+
+.multi-player {
+    margin-top:15px;
+  }
+.multi-player button {
+    height: 60px;
+    padding:10px 20px;
+    background:#111;
+    color:#f5f5f5;
+    border:2px solid #111;
+    font-size:16px;
+    font-weight:600;
+    outline:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition: all 300ms ease-in-out;
+}
+.multi-player button:hover {
+    color:#111;
+    background:#f5f5f5;
+}

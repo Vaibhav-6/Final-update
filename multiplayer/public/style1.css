@@ -1,0 +1,403 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+  background-image: linear-gradient(to right ,#f6d365 0%, #fda085 100%);
+
+}
+#code1{
+  height: 50px;
+  width: 100%;
+  background: black;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+}
+#code{
+  width: 25%;
+  background: black;
+  color: white;
+  
+  border-radius: 10px;
+  text-align: center;
+  margin-left: 40px;
+  margin-right: 10px;
+}
+#gameCodeDisplay{
+  width: 30%;
+  left: 60px;
+  outline: none;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5%;
+  font-size: 30px;
+  height: 40px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.theme{
+  display: flex;
+  justify-content: flex-end;
+  background: ivory;
+  margin:5px 0px;
+  width:30px;
+  height:30px;
+  border:1px solid #34f234;
+  text-align:center;
+  display:inline-block;
+  border-radius:50%;
+  line-height:60px;
+  font-size: 20px;
+}
+.res{
+
+  width: 40px;
+  height: 40px;
+
+}
+#Computer {
+margin-bottom: 20px;
+font-weight: 500;
+font-size: 20px;
+font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+color: black;
+}
+#Player{
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    
+}
+#result-mode {
+border: 2px solid black;
+background: rgba(255, 0, 0, 0.63);
+border-radius: 20px;
+
+margin-bottom: 20px;
+font-weight: 700;
+font-size: 20px;
+font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+color: black;
+}
+#ScoreCard{
+    margin-top: 10px;
+    height: 25vh;
+}
+.Score-container{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+.heading1{
+    background: black;
+    position: relative;
+    color: var(--play-val);
+    margin-bottom: 5px;
+    margin-right: 15px;
+    margin-left: 10px;
+    
+}
+.heading2{
+  background: black;
+    position: relative;
+    color: var(--comp-val);
+    margin-right: 10px;
+
+}
+.player{
+    width: 50%;
+}
+.computer{
+    width: 50%;
+}
+.score-count{
+    height: 5vh;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#player-score{
+    text-align: center;
+    width: 50%;
+    font-size: 25px;
+    font-weight: 500;
+}
+#computer-score{
+    text-align: center;
+    width: 50%;
+    font-size: 25px;
+    font-weight: 500;
+}
+.result{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+#socket{
+    justify-content: center;
+    width: 100%;
+    display: flex;
+}
+.player-p1{
+    width: 50%;
+}
+.player-p2{
+    width: 50%;
+}
+
+.connected, .ready{
+    font-weight: normal;
+}
+.connected span,
+.ready span{
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    background: red;
+}
+span.green{
+    background: green;
+}
+
+
+.center {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+  }
+  ::placeholder{
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .popup {
+    width:330px;
+    height:300px;
+    padding:30px 20px; 
+    background:#f5f5f5;
+    border-radius:10px;
+    box-sizing:border-box;
+    z-index:2;
+    text-align:center;
+    opacity:0;
+    top:-200%;
+    transform:translate(-50%,-50%) scale(0.5);
+    transition: opacity 300ms ease-in-out,
+                top 1000ms ease-in-out,
+                transform 1000ms ease-in-out;
+  }
+  .popup.active {
+    opacity:1;
+    top:50%;
+    transform:translate(-50%,-50%) scale(1);
+    transition: transform 300ms cubic-bezier(0.18,0.89,0.43,1.19);
+  }
+  .form-group{
+    background: #f5f5f5;
+  }
+  #gameCodeInput{
+    background: #f5f5f5;
+  }
+  .popup .icon {
+    margin:5px 0px;
+    width:50px;
+    height:50px;
+    border:2px solid #34f234;
+    text-align:center;
+    display:inline-block;
+    border-radius:50%;
+    line-height:60px;
+  }
+  .popup .icon i.fa {
+    font-size:30px;
+    color:#34f234;
+  } 
+.gridImg{
+    width: 24px;
+    height: 24px;
+  }
+  .popup .title {
+    margin:5px 0px;
+    font-size:30px;
+    background: #f5f5f5;
+    font-weight:600;
+  }
+  .popup .description {
+    color:#222;
+    font-size:15px;
+    background: #f5f5f5;
+    padding:5px;
+  }
+  .radio1{
+      font-size: 10px;
+      font-weight: 100;
+  }
+  .popup .dismiss-btn {
+    margin-top:15px;
+    background: #f5f5f5;
+  }
+  .popup .dismiss-btn button {
+    padding:10px 20px;
+    background:#111;
+    color:#f5f5f5;
+    border:2px solid #111;
+    font-size:16px;
+    font-weight:600;
+    outline:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition: all 300ms ease-in-out;
+  }
+  .popup .dismiss-btn button:hover {
+    color:#111;
+    background:#f5f5f5;
+  }
+  .popup > div {
+    position:relative;
+    top:10px;
+    opacity:0;
+  }
+  .popup.active > div {
+    top:0px;
+    opacity:1;
+  }
+  .popup.active .icon {
+    transition: all 300ms ease-in-out 250ms;
+  }
+  .popup.active .title {
+    transition: all 300ms ease-in-out 300ms;
+  }
+  .popup.active .description {
+    transition: all 300ms ease-in-out 350ms;
+  }
+  .popup.active .dismiss-btn {
+    transition: all 300ms ease-in-out 400ms;
+  }
+
+
+  /*result*/ 
+.center1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.popup1 {
+    width: 350px;
+    height: 55vh;
+    padding: 30px 20px;
+    background:#f5f5f5;
+    border-radius: 10px;
+    box-sizing: border-box;
+    z-index: 2;
+    text-align: center;
+    opacity: 0;
+    top: -200%;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: opacity 300ms ease-in-out, top 1000ms ease-in-out,
+    transform 1000ms ease-in-out;
+}
+.popup1.active {
+    opacity: 1;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+}
+.popup1 .icon {
+    margin: 5px 0px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #34f234;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    line-height: 60px;
+}
+.popup1 .icon i.fa {
+    font-size: 30px;
+    color: #34f234;
+}
+.gridImg {
+    width: 24px;
+    height: 24px;
+}
+.popup1 .title1 {
+    margin: 5px 0px;
+    font-size: 30px;
+    font-weight: 600;
+}
+.popup1 .description1 {
+    color: #222;
+    height: 20vh;
+    display: flex;
+            flex-direction: column;
+            font-size: 15px;
+            padding: 5px;
+    background:#f5f5f5;
+    padding: 5px;
+}
+.radio1 {
+    font-size: 10px;
+    font-weight: 100;
+}
+.popup1 .dismiss-btn1 {
+    margin-top: 15px;
+}
+.popup1 .dismiss-btn1 button {
+    padding: 10px 20px;
+    background: #111;
+    color: #f5f5f5;
+    border: 2px solid #111;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+.popup1 .dismiss-btn1 button:hover {
+    color: #111;
+    background: #f5f5f5;
+}
+.popup1 > div {
+    position: relative;
+    top: 10px;
+    opacity: 0;
+}
+.popup1.active > div {
+    top: 0px;
+    opacity: 1;
+}
+.popup1.active .icon {
+    transition: all 300ms ease-in-out 250ms;
+}
+.popup1.active .title1 {
+    transition: all 300ms ease-in-out 300ms;
+}
+.popup1.active .description1 {
+    transition: all 300ms ease-in-out 350ms;
+}
+.popup1.active .dismiss-btn1 {
+    transition: all 300ms ease-in-out 400ms;
+}
+#register #login {
+    padding: 10px 20px;
+    background: #111;
+    color: #f5f5f5;
+    border: 2px solid #111;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
